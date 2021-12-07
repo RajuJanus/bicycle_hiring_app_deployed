@@ -135,13 +135,13 @@ with dataset:
     st.write(bikehiring_from_2010.head())
 
 
-    st.subheader('We can have a look on how good is our model in prediction with cross validation')
-    st.text("""We plot our Mean absolute error by training the model for two years
-     and seeing the predition of next 365 days""")
+#     st.subheader('We can have a look on how good is our model in prediction with cross validation')
+#     st.text("""We plot our Mean absolute error by training the model for two years
+#      and seeing the predition of next 365 days""")
 
-    from prophet.diagnostics import cross_validation, performance_metrics
-    cv_results = cross_validation(model = m, initial= '731 days', horizon = '365 days')
-    performance = performance_metrics(cv_results)
-    from prophet.plot import plot_cross_validation_metric
-    fig3 = plot_cross_validation_metric(cv_results, metric = 'mape')
-    st.write(fig3)
+#     from prophet.diagnostics import cross_validation, performance_metrics
+#     cv_results = cross_validation(model = m, initial= '731 days', horizon = '365 days')
+#     performance = performance_metrics(cv_results)
+#     from prophet.plot import plot_cross_validation_metric
+#     fig3 = plot_cross_validation_metric(cv_results, metric = 'mape')
+#     st.write(fig3)

@@ -14,15 +14,9 @@ header = st.container()
 
 features = st.container()
 dataset = st.container()
-st.cache()
+bikehiring_from_2010  =  pd.read_excel('data/streamlit_bikehiring.xlsx', engine='openpyxl')
 
-
-def load_data():
-
-
-    bikehiring_from_2010  =  pd.read_excel('data/streamlit_bikehiring.xlsx')
-
-    return bikehiring_from_2010
+ 
 
 # Read the coordinates file for the stations
 
@@ -52,7 +46,7 @@ with header:
     sel_col, disp_col = st.columns(2)
     max_depth = sel_col.slider('Select the range of prediction starting from 2019-12-31', min_value = 365, max_value = 365*10, value =365)
   
-    bikehiring_from_2010 = load_data()
+    
    
     m= joblib.load('data/my_model')
     future = m.make_future_dataframe(periods = max_depth, freq = 'D')

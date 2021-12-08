@@ -21,6 +21,7 @@ bikehiring_from_2010  =  pd.read_excel('data/streamlit_bikehiring.xlsx', engine=
 # Read the coordinates file for the stations
 
 coordinates = pd.read_csv('data/start_location_coordinates.csv')
+m= joblib.load('data/my_model')
 
 with header:
     st.title("Time series analysis and predictions on Bike Hiring in London(UK)")
@@ -41,25 +42,6 @@ with header:
     You will get a prediction on how many bicycle will be on the streets in future dates/months etc.
     
     """)
-
-    st.subheader('Select a range of days for prediction')
-    sel_col, disp_col = st.columns(2)
-    max_depth = sel_col.slider('Select the range of prediction starting from 2019-12-31', min_value = 365, max_value = 365*10, value =365)
-  
-    
-   
-    m= joblib.load('data/my_model')
-    future = m.make_future_dataframe(periods = max_depth, freq = 'D')
-    st.text("""
-     In the graph: Black dots are true values (number of hired bicycles on that day, from available data)
-     Deep blue line: Prediction by the model
-     Light blue regions indicates predicted upper and lower values.   
-     
-     """)
-    forcast = m.predict(future)
-    plot1 = m.plot(forcast)
-    st.write(plot1)
-
     st.subheader('How many bicycle will be hired tomorrow? ')
     d = dt.today() + timedelta(days=1)
 
@@ -89,6 +71,23 @@ with header:
     forcast_to_show.columns = ['Your selected date', 'Expected Number of hires', 'Upper limit of hires', 'Lower limit of hires']
    
     st.write(forcast_to_show)
+    
+    st.subheader('Select a range of days for prediction')
+    sel_col, disp_col = st.columns(2)
+    max_depth = sel_col.slider('Select the range of prediction starting from 2019-12-31', min_value = 365, max_value = 365*10, value =365)
+    
+    future = m.make_future_dataframe(periods = max_depth, freq = 'D')
+    st.text("""
+     In the graph: Black dots are true values (number of hired bicycles on that day, from available data)
+     Deep blue line: Prediction by the model
+     Light blue regions indicates predicted upper and lower values.   
+     
+     """)
+    forcast = m.predict(future)
+    plot1 = m.plot(forcast)
+    st.write(plot1)
+
+    
 
 with features:
     st.header("Let's see some features")

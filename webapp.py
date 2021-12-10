@@ -35,18 +35,20 @@ with header:
     st.title("Time series analysis and predictions on Bike Hiring in London(UK)")
     st.text(
     """
-     Do you want to hire a bike in London? Do you wonder how many bikes will be rented in 
-     London, tomorrow or next months or even next year in this date?
+     Do you want to hire a bike in London? Do you wonder how many bikes will be 
+     rented in London, tomorrow or next months or even next year in this date?
      Then machine learning algorithms can help you to figure it out.
  
      How do I make a prediction?
      I use a machine learning algorithm called Prophet developed 
      by the core Data Science team in Facebook for this.
     
-     In this project, we will also analyze the data and trends of bicycle traffic in London by using other python libraries.
+     In this project, we will also analyze the data and trends of 
+     bicycle traffic in London by using other python libraries.
      We will explore seasonality patterns.
      
-     And most importantly, you will know how many bicycles might be on the streets in future dates/months/years, etc.
+     And most importantly, you will know how many bicycles might be 
+     on the streets in future dates/months/years, etc.
     
     """)
    

@@ -1,3 +1,5 @@
+# Import Libraries
+
 import pandas as pd
 import numpy as np
 from datetime import datetime as dt, timedelta
@@ -14,34 +16,44 @@ header = st.container()
 
 features = st.container()
 dataset = st.container()
+
+# Read the dataset
+
 bikehiring_from_2010  =  pd.read_excel('data/streamlit_bikehiring.xlsx', engine='openpyxl')
 
  
 
-# Read the coordinates file for the stations
+# Read the coordinates file for the stations and load the trained model
 
 coordinates = pd.read_csv('data/start_location_coordinates.csv')
 m= joblib.load('data/my_model')
+
+
+# Make first header and give information to the users
 
 with header:
     st.title("Time series analysis and predictions on Bike Hiring in London(UK)")
     st.text(
     """
-    Do you want to hire a bike in London?
-    You know, London is a crowdy city! Whether you are turist or you live in London 
-    If want to know if the streets will be crowded with the hired bikes in London in 
-    a specific time? 
-    Then you are at right place!
-    You will get predictions about hired bicycle traffic in the city!
+     Do you want to hire a bike in London?
+     Let's be honest London is a crowded city! 
+     Whether you are a tourist or even if you want to start a bike rental business in London, 
+     then you are at the right place!
+ 
+     You will get predictions about hired bicycle traffic in the city!
     
-    How do I make prediction?
-    I use a machine learning algorthom called facebook Prophet for time time series predictions
+     How do I make a prediction?
+     I use a machine learning algorithm called facebook Prophet for time-series analysis and prediction.
     
-    In this project we will also analyze the data about trends of the bicycle traffic  in London by using other python libraries.
-    We will explore seasonality patterns. At the end you will get a time series forcast. 
-    You will get a prediction on how many bicycle will be on the streets in future dates/months etc.
+     In this project, we will also analyze the data about trends of bicycle traffic in London by using other python libraries.
+     We will explore seasonality patterns.
+     And most importantly, you will know how many bicycles might be on the streets in future dates/months/years, etc.
     
     """)
+   
+   
+  # Ask user input and provide results
+   
     st.subheader('How many bicycle will be hired tomorrow? ')
     d = dt.today() + timedelta(days=1)
 
@@ -87,7 +99,7 @@ with header:
     plot1 = m.plot(forcast)
     st.write(plot1)
 
-    
+# Show users some features
 
 with features:
     st.header("Let's see some features")
@@ -110,7 +122,8 @@ with features:
 
     st.bar_chart(Monthly_average_temperature)
 
-
+# Give users information about the dataset
+    
 with dataset:
 
     st.header("Information about the dataset")
@@ -133,7 +146,8 @@ with dataset:
     """)
     st.write(bikehiring_from_2010.head())
 
-
+# This section is for cross validation. I commented out this to make the things simple. Future I can add this feature too.
+    
 #     st.subheader('We can have a look on how good is our model in prediction with cross validation')
 #     st.text("""We plot our Mean absolute error by training the model for two years
 #      and seeing the predition of next 365 days""")

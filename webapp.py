@@ -35,18 +35,19 @@ with header:
     st.title("Time series analysis and predictions on Bike Hiring in London(UK)")
     st.text(
     """
-     Do you want to hire a bike in London?
-     Let's be honest London is a crowded city! 
-     Whether you are a tourist or even if you want to start a bike rental business in London, 
-     then you are at the right place!
+     Do you want to hire a bike in London? Do you wonder how many bikes will be rented in 
+     London, tomorrow or next months or even next year in this date?
+     Then machine learning algorithms can help you to figure it out.
+     
+     May you are a tourist or even if you want to start a bike rental business in London, 
+     then this predictions might be very helpful for you!
  
-     You will get predictions about hired bicycle traffic in the city!
-    
      How do I make a prediction?
-     I use a machine learning algorithm called facebook Prophet for time-series analysis and prediction.
+     I use a machine learning algorithm called Prophet developed by the core Data Science team in Facebook.
     
-     In this project, we will also analyze the data about trends of bicycle traffic in London by using other python libraries.
+     In this project, we will also analyze the data and trends of bicycle traffic in London also by using other python libraries.
      We will explore seasonality patterns.
+     
      And most importantly, you will know how many bicycles might be on the streets in future dates/months/years, etc.
     
     """)

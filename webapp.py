@@ -70,7 +70,7 @@ with header:
     st.write(forcast_to_show)
 
 
-    st.subheader('Do you want to know predition fora specific date? ')
+    st.subheader('Do you want to know predition for a specific date? ')
     d = st.date_input("""Select a date and see the prediction in the table below""")
 
     future_date = pd.DataFrame({'ds':[d]})
@@ -87,10 +87,11 @@ with header:
     
     st.subheader('Select a range of days for prediction')
     sel_col, disp_col = st.columns(2)
-    max_depth = sel_col.slider('Select the range of prediction starting from 2019-12-31', min_value = 365, max_value = 365*10, value =365)
+    max_depth = sel_col.slider('Select the range of prediction starting from 2019-12-31. The prediction is generated in 30 seconds!', min_value = 365, max_value = 365*10, value =365)
     
     future = m.make_future_dataframe(periods = max_depth, freq = 'D')
     st.text("""
+     
      In the graph: Black dots are true values (number of hired bicycles on that day, from available data)
      Deep blue line: Prediction by the model
      Light blue regions indicates predicted upper and lower values.   
